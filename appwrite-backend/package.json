@@ -1,0 +1,9 @@
+{
+  "name": "appwrite-backend",
+  "version": "1.0.0",
+  "description": "Client-side auth and file access functions using the Appwrite Web SDK",
+  "type": "module",
+  "dependencies": {
+    "appwrite": "^17.0.0"
+  }
+}
