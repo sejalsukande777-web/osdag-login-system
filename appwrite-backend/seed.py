@@ -12,7 +12,7 @@ import os
 from dotenv import load_dotenv
 from appwrite.client import Client
 from appwrite.services.users import Users
-from appwrite.services.databases import Databases
+from appwrite.services.tables_db import TablesDB
 from appwrite.id import ID
 from appwrite.permission import Permission
 from appwrite.role import Role
@@ -27,7 +27,7 @@ client.set_project(os.getenv("APPWRITE_PROJECT_ID"))
 client.set_key(os.getenv("APPWRITE_API_KEY"))
 
 users = Users(client)
-databases = Databases(client)
+databases = TablesDB(client)
 
 DATABASE_ID = "osdag-database"
 FILES_TABLE_ID = "files"
@@ -65,13 +65,13 @@ def seed():
                 password=entry["password"],
                 name=entry["name"],
             )
-            user_id = user["$id"]
+            user_id = user.id
             print(f"Created user {entry['email']} (id: {user_id})")
         except AppwriteException as e:
             if "already exists" in str(e).lower():
                 # look up the existing user's id instead of failing
                 existing = users.list(queries=[Query.equal("email", [entry["email"]])])
-                user_id = existing["users"][0]["$id"]
+                user_id = existing.users[0].id
                 print(f"User {entry['email']} already exists (id: {user_id}), reusing it")
             else:
                 raise
@@ -79,10 +79,10 @@ def seed():
         # create their file rows, each locked to just this one user
         for f in entry["files"]:
             try:
-                databases.create_document(
+                databases.create_row(
                     database_id=DATABASE_ID,
-                    collection_id=FILES_TABLE_ID,
-                    document_id=ID.unique(),
+                    table_id=FILES_TABLE_ID,
+                    row_id=ID.unique(),
                     data={
                         "owner_id": user_id,
                         "filename": f["filename"],
@@ -102,3 +102,5 @@ def seed():
 if __name__ == "__main__":
     seed()
     print("\nSeeding complete.")
+
+
