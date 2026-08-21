@@ -1,3 +1,8 @@
+// Sets up the Appwrite client that every other file here uses.
+// Fill in your own values below, or better - load them from environment
+// variables if you're bundling this with something like Vite (import.meta.env)
+// or Webpack (process.env). Keeping it simple here since this is meant to be
+// dropped straight into the provided testing client (index.html).
 
 import { Client, Account, Databases, Query } from "appwrite";
 

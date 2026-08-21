@@ -34,10 +34,11 @@ def get_file(
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="File not found.")
 
     if file.owner_id != current_user.id:
-        # file exists but it's someone else's. using 404 here instead of 403 on
-        # purpose - if I returned 403 that basically confirms "yeah this file_id
-        # is real, just not yours" which tells an attacker the id is valid.
-        # same 404 either way so they can't tell the difference
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="File not found.")
+        # task explicitly wants this case distinguishable from "doesn't exist"
+        # (I originally used 404 for both here, thinking it was safer since a
+        # 403 confirms the id is real - that's a reasonable general practice,
+        # but it doesn't match what this specific task asks for, so switched
+        # to 403 to actually satisfy the stated requirement)
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="You do not have access to this file.")
 
     return file

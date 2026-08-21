@@ -12,7 +12,7 @@ import os
 from dotenv import load_dotenv
 from appwrite.client import Client
 from appwrite.services.users import Users
-from appwrite.services.tables_db import TablesDB
+from appwrite.services.databases import Databases
 from appwrite.id import ID
 from appwrite.permission import Permission
 from appwrite.role import Role
@@ -27,7 +27,7 @@ client.set_project(os.getenv("APPWRITE_PROJECT_ID"))
 client.set_key(os.getenv("APPWRITE_API_KEY"))
 
 users = Users(client)
-databases = TablesDB(client)
+databases = Databases(client)
 
 DATABASE_ID = "osdag-database"
 FILES_TABLE_ID = "files"
@@ -79,10 +79,10 @@ def seed():
         # create their file rows, each locked to just this one user
         for f in entry["files"]:
             try:
-                databases.create_row(
+                databases.create_document(
                     database_id=DATABASE_ID,
-                    table_id=FILES_TABLE_ID,
-                    row_id=ID.unique(),
+                    collection_id=FILES_TABLE_ID,
+                    document_id=ID.unique(),
                     data={
                         "owner_id": user_id,
                         "filename": f["filename"],
@@ -102,5 +102,3 @@ def seed():
 if __name__ == "__main__":
     seed()
     print("\nSeeding complete.")
-
-

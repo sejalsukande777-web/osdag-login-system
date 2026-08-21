@@ -10,29 +10,29 @@ Base.metadata.create_all(bind=engine)
 
 TEST_USERS = [
     {
-        "email": "himanshu@example.com",
-        "password": "HimanshuPassword123",
-        "full_name": "Himanshu Gupta",
+        "email": "alice@example.com",
+        "password": "AlicePassword123",
+        "full_name": "Alice Anderson",
         "files": [
-            {"filename": "himanshu_resume.txt", "content": "Himanshu's resume content goes here."},
-            {"filename": "himanshu_notes.txt", "content": "Some private notes belonging to Himanshu."},
+            {"filename": "alice_resume.txt", "content": "Alice's resume content goes here."},
+            {"filename": "alice_notes.txt", "content": "Some private notes belonging to Alice."},
         ],
     },
     {
-        "email": "sejal@example.com",
-        "password": "SejalPassword123",
-        "full_name": "Sejal sukande",
+        "email": "bob@example.com",
+        "password": "BobPassword123",
+        "full_name": "Bob Baker",
         "files": [
-            {"filename": "sejal_report.txt", "content": "Sejal's quarterly report draft."},
+            {"filename": "bob_report.txt", "content": "Bob's quarterly report draft."},
         ],
     },
     {
-        "email": "aryan@example.com",
-        "password": "aryanPassword123",
-        "full_name": "aryan tambe",
+        "email": "carol@example.com",
+        "password": "CarolPassword123",
+        "full_name": "Carol Chen",
         "files": [
-            {"filename": "aryan_budget.txt", "content": "Aryan's personal budget sheet."},
-            {"filename": "aryan_ideas.txt", "content": "Aryan's project idea list."},
+            {"filename": "carol_budget.txt", "content": "Carol's personal budget sheet."},
+            {"filename": "carol_ideas.txt", "content": "Carol's project idea list."},
         ],
     },
 ]

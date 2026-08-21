@@ -70,8 +70,8 @@ Check `appwrite-backend/README.md` — I'll fill in the "what Appwrite did for m
 ## Testing with the seeded users
 
 After `python seed.py`, you can log in as:
-- `rahul@example.com` / `rahulPassword123`
-- `sejal@example.com` / `sejalPassword123`
-- `aryan@example.com` / `aryanPassword123`
+- `alice@example.com` / `AlicePassword123`
+- `bob@example.com` / `BobPassword123`
+- `carol@example.com` / `CarolPassword123`
 
 I tested this myself by logging in as two different users and trying to fetch one user's file using the other user's token — confirmed it gets rejected with a 404, and confirmed a token stops working right after logout.

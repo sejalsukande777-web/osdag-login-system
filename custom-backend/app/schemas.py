@@ -28,6 +28,10 @@ class UserOut(BaseModel):
 class TokenResponse(BaseModel):
     access_token: str
     token_type: str = "bearer"
+    # the provided testing client's auto-fill logic looks for `body.token`
+    # specifically, so this is just an alias of access_token for compatibility
+    # with that client - access_token stays the "real"/standard field name
+    token: str
 
 
 class FileOut(BaseModel):
