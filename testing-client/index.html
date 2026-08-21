@@ -32,9 +32,9 @@
 
 <fieldset>
   <legend>Appwrite settings (only used in "Appwrite" mode)</legend>
-  <label>Endpoint <input id="awEndpoint" value="https://cloud.appwrite.io/v1" size="40"></label>
-  <label>Project ID <input id="awProjectId" value="YOUR_PROJECT_ID" size="30"></label>
-  <label>Database ID <input id="awDatabaseId" value="YOUR_DATABASE_ID" size="30"></label>
+  <label>Endpoint <input id="awEndpoint" value="https://sgp.cloud.appwrite.io/v1" size="40"></label>
+<label>Project ID <input id="awProjectId" value="6a85bdaf002e9a5e7cee" size="30"></label>
+<label>Database ID <input id="awDatabaseId" value="osdag-database" size="30"></label>
   <label>Files collection ID <input id="awFilesCollectionId" value="files" size="30"></label>
   <label>Storage bucket ID <input id="awBucketId" value="user-files" size="30"></label>
   <p>These map to resources you create yourself in the Appwrite console — see README for the exact setup (attributes, permissions, indexes).</p>
@@ -83,10 +83,8 @@
 <pre id="output">(responses will show up here)</pre>
 
 <script src="mock-api.js"></script>
-<!--
 <script src="https://cdn.jsdelivr.net/npm/appwrite@14.0.0"></script>
 <script src="appwrite-adapter.js"></script>
--->
 <script>
 function base() { return document.getElementById('baseUrl').value.replace(/\/$/, ''); }
 function useCookies() { return document.getElementById('useCookies').checked; }
